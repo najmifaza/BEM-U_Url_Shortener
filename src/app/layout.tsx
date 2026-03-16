@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Grainient from "@/components/background/Grainient";
+import Dock from "@/components/ui/Dock";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +29,38 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {" "}
+        <div className="absolute inset-0 z-0">
+          <Grainient
+            color1="#a79dda"
+            color2="#201d39"
+            color3="#514575"
+            // color1="#FF9FFC" tiga ini warna aslinya
+            // color2="#5227FF"
+            // color3="#B19EEF"
+            timeSpeed={1}
+            colorBalance={0}
+            warpStrength={1}
+            warpFrequency={5}
+            warpSpeed={2}
+            warpAmplitude={50}
+            blendAngle={0}
+            blendSoftness={0.05}
+            rotationAmount={500}
+            noiseScale={2}
+            grainAmount={0.1}
+            grainScale={2}
+            grainAnimated={false}
+            contrast={1.5}
+            gamma={1}
+            saturation={1}
+            centerX={0}
+            centerY={0}
+            zoom={0.8}
+          />
+        </div>
         {children}
+        <Dock />
       </body>
     </html>
   );

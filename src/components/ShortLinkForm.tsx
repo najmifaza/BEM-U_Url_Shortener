@@ -18,7 +18,19 @@ import { supabase } from "@/lib/supabase";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+import { GlassTable } from "./glass-table";
+import {
+  GlassSelect,
+  GlassSelectContent,
+  GlassSelectGroup,
+  GlassSelectItem,
+  GlassSelectLabel,
+  GlassSelectTrigger,
+  GlassSelectValue,
+} from "./glass-select";
+import { GlassInput } from "./ui/glass-input";
+import { GlassButton } from "./ui/glass-button";
+import { LEMBAGA_LIST } from "@/lib/constants";
 // 2. Buat Skema Validasi Zod (Sangat Ketat & Profesional)
 const formSchema = z.object({
   urlAsli: z.string().min(1, { message: "URL Asli tidak boleh kosong." }).url({
@@ -83,7 +95,7 @@ export default function ShortLinkForm() {
         alert("Gagal membuat link: " + error.message);
       }
     } else {
-      const fullUrl = `${window.location.origin}/${data.slug}`;
+      const fullUrl = `bem-unsoed.com/${data.slug}`;
       setShortUrl(fullUrl); // Simpan URL lengkap ke state
       setSuccessMessage(`Berhasil! Link Anda sudah siap.`); // Pesan sukses singkat saja
       reset();
@@ -102,7 +114,7 @@ export default function ShortLinkForm() {
   return (
     <GlassCard
       className="flex flex-col  backdrop-blur-md
-       shadow-2xl rounded-3xl p-8 border bg-white/30 "
+       shadow-2xl rounded-3xl p-8 border "
     >
       <div className="flex justify-center mb-3">
         <Image
@@ -116,7 +128,7 @@ export default function ShortLinkForm() {
       </div>
 
       <div className="w-full space-y-6 text-center sm:text-left">
-        <h2 className="font-bold text-2xl text-zinc-900 dark:text-zinc-50 text-center">
+        <h2 className="font-bold text-2xl text-zinc-50 dark:text-zinc-50 text-center">
           Generate Short Link
         </h2>
 
@@ -154,7 +166,7 @@ export default function ShortLinkForm() {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 text-left">
           <div className="space-y-2">
             <Label htmlFor="urlAsli">Real URL</Label>
-            <Input
+            <GlassInput
               id="urlAsli"
               type="text"
               placeholder="https://contoh.com/artikel-sangat-panjang"
@@ -172,8 +184,8 @@ export default function ShortLinkForm() {
           <div className="space-y-2">
             <Label htmlFor="slug">Short URL</Label>
             <div className="flex items-center gap-2">
-              <span className="text-black  text-sm">/</span>
-              <Input
+              <span className="text-white  text-sm">/</span>
+              <GlassInput
                 id="slug"
                 type="text"
                 placeholder="oprec-bem-unsoed"
@@ -188,70 +200,23 @@ export default function ShortLinkForm() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="Kementrian">Lembaga</Label>
-            <Select onValueChange={(value) => setValue("lembaga", value)}>
-              <SelectTrigger
+            <GlassSelect onValueChange={(value) => setValue("lembaga", value)}>
+              <GlassSelectTrigger
                 className={`w-full ${errors.lembaga ? "border-red-500" : ""}`}
               >
-                <SelectValue placeholder="Pilih kementrian atau biro" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectLabel>Kementerian / Biro</SelectLabel>
-                  <SelectItem value="Biro Keuangan">Biro Keuangan</SelectItem>
-                  <SelectItem value="Biro Kesekretariatan">
-                    Biro Kesekretariatan
-                  </SelectItem>
-                  <SelectItem value="Biro Pengendali dan Penjamin Mutu">
-                    Biro Pengendali dan Penjamin Mutu
-                  </SelectItem>
-                  <SelectItem value="Biro Satuan Pengawas Internal">
-                    Biro Satuan Pengawas Internal
-                  </SelectItem>
-                  <SelectItem value="Biro Pengembangan Sumber Daya Anggota">
-                    Biro Pengembangan Sumber Daya Anggota
-                  </SelectItem>
-                  <SelectItem value="Kementerian Advokasi Kesejahteraan Mahasiswa">
-                    Kementerian Advokasi Kesejahteraan Mahasiswa
-                  </SelectItem>
-                  <SelectItem value="Kementerian Aksi dan Propaganda">
-                    Kementerian Aksi dan Propaganda
-                  </SelectItem>
-                  <SelectItem value="Kementerian Analisis Isu Strategis">
-                    Kementerian Analisis Isu Strategis
-                  </SelectItem>
-                  <SelectItem value="Kementerian Pemberdayaan Perempuan">
-                    Kementerian Pemberdayaan Perempuan
-                  </SelectItem>
-                  <SelectItem value="Kementerian Pengembangan Sumber Daya Mahasiswa">
-                    Kementerian Pengembangan Sumber Daya Mahasiswa
-                  </SelectItem>
-                  <SelectItem value="Kementerian Seni dan Olahraga">
-                    Kementerian Seni dan Olahraga
-                  </SelectItem>
-                  <SelectItem value="Kementerian Prestasi dan Inovasi">
-                    Kementerian Prestasi dan Inovasi
-                  </SelectItem>
-                  <SelectItem value="Kementerian Dalam Negeri">
-                    Kementerian Dalam Negeri
-                  </SelectItem>
-                  <SelectItem value="Kementerian Luar Negeri">
-                    Kementerian Luar Negeri
-                  </SelectItem>
-                  <SelectItem value="Kementerian Pengabdian Masyarakat">
-                    Kementerian Pengabdian Masyarakat
-                  </SelectItem>
-                  <SelectItem value="Kementerian Media Kreatif dan Aplikatif">
-                    Kementerian Media Kreatif dan Aplikatif
-                  </SelectItem>
-                  <SelectItem value="Kementerian Media Komunikasi dan Informasi">
-                    Kementerian Media Komunikasi dan Informasi
-                  </SelectItem>
-                  <SelectItem value="Kementerian Riset dan Data">
-                    Kementerian Riset dan Data
-                  </SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
+                <GlassSelectValue placeholder="Pilih kementrian atau biro" />
+              </GlassSelectTrigger>
+              <GlassSelectContent>
+                <GlassSelectGroup>
+                  <GlassSelectLabel>Kementerian / Biro</GlassSelectLabel>
+                  {LEMBAGA_LIST.map((lembaga) => (
+                    <GlassSelectItem key={lembaga} value={lembaga}>
+                      {lembaga}
+                    </GlassSelectItem>
+                  ))}
+                </GlassSelectGroup>
+              </GlassSelectContent>
+            </GlassSelect>
             {errors.lembaga && (
               <p className="text-sm text-red-500 mt-1">
                 {errors.lembaga.message}
@@ -259,9 +224,14 @@ export default function ShortLinkForm() {
             )}
           </div>
           <div>
-            <Button type="submit" className="w-full" disabled={loading}>
+            <GlassButton
+              variant="default"
+              type="submit"
+              className="w-full"
+              disabled={loading}
+            >
               {loading ? "Generating..." : "Generate"}
-            </Button>
+            </GlassButton>
           </div>
         </form>
       </div>
