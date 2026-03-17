@@ -15,12 +15,13 @@ export default function Hero() {
             </Link>
           </GlassBadge>
           <h1 className="text-white/80 mt-6 font-semibold text-4xl tracking-tighter sm:text-5xl md:text-6xl md:leading-[1.2] lg:text-7xl">
-            Customized Shadcn UI Blocks & Components
+            Bikin Link Proker <br />
+            Nggak Ribet Lagi
           </h1>
           <p className="mt-6 text-foreground/80 md:text-lg">
-            Explore a collection of Shadcn UI blocks and components, ready to
-            preview and copy. Streamline your development workflow with
-            easy-to-implement examples.
+            Ubah URL panjang yang rumit menjadi tautan pendek yang rapi dan
+            mudah dibagikan. Kelola semua tautan Anda dalam satu dashboard
+            modern yang elegan.
           </p>
           <div className="mt-12 flex items-center justify-center gap-4">
             <GlassButton size="lg" asChild>
