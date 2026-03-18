@@ -19,7 +19,7 @@ export default function Dock() {
       icon: <Link />,
       label: "Shortner",
       href: "/shortener",
-      active: pathname === "/shortener  ",
+      active: pathname === "/shortener",
     },
     {
       id: "database",

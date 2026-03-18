@@ -37,13 +37,13 @@ export default async function Database() {
       />
       {/* LAYER 3: Form Utama (Paling Atas) */}
       <main className="w-full max-w-2xl relative z-20">
-        <GlassTable className="max-h-95 sm: max-h-120 ">
+        <GlassTable className="max-h-145 sm:max-h-120 ">
           <GlassTableHeader>
             <GlassTableRow>
               <GlassTableHead>Lembaga</GlassTableHead>
               <GlassTableHead>Slug</GlassTableHead>
-              <GlassTableHead>Tanggal</GlassTableHead>
               <GlassTableHead className="text-right">Klik</GlassTableHead>
+              <GlassTableHead>Tanggal</GlassTableHead>
             </GlassTableRow>
           </GlassTableHeader>{" "}
           <GlassTableBody>
@@ -55,12 +55,12 @@ export default async function Database() {
                 <GlassTableCell>
                   <CopyButton slug={link.slug} />
                 </GlassTableCell>
+                <GlassTableCell className="text-right  font-bold">
+                  {link.jumlah_klik || 0}
+                </GlassTableCell>
                 <GlassTableCell className="text-xs opacity-60">
                   {/* Format tanggal agar mudah dibaca */}
                   {new Date(link.created_at).toLocaleDateString("id-ID")}
-                </GlassTableCell>
-                <GlassTableCell className="text-right  font-bold">
-                  {link.jumlah_klik || 0}
                 </GlassTableCell>
               </GlassTableRow>
             ))}

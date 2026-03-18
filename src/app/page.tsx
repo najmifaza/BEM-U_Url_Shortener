@@ -11,8 +11,8 @@ export default function Hero() {
   return (
     <div className="dark">
       <div
-        className="flex min-h-screen items-start sm:items-center justify-center px-6 pt-30
-      sm:pt-0"
+        className="flex min-h-screen items-start sm:items-center justify-center 
+  pt-30 sm:pt-0 scale-[0.87] sm:scale-100 origin-top"
       >
         <div className="relative z-10 max-w-4xl text-center  ">
           <GlassBadge asChild className="rounded-full border-border py-1 ">
