@@ -78,7 +78,7 @@ export default function ShortLinkForm() {
     );
 
     // 2. Cek apakah password benar (Silakan ganti 'admin123' dengan password keinginan Anda)
-    if (passwordInput !== "ditjenwebgantengsemua") {
+    if (passwordInput !== "ditjenwebganteng") {
       alert("Password Salah! Anda tidak memiliki akses.");
       return; // Berhenti di sini, jangan lanjut simpan ke database
     }
