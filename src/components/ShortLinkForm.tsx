@@ -48,8 +48,8 @@ const formSchema = z.object({
     .string()
     .min(3, { message: "Slug minimal 3 karakter." })
     .max(20, { message: "Slug maksimal 20 karakter." })
-    .regex(/^[a-z0-9-]+$/, {
-      message: "Slug hanya boleh berisi huruf kecil, angka, dan strip (-).",
+    .regex(/^[a-zA-Z0-9-]+$/, {
+      message: "Slug hanya boleh berisi huruf, angka, dan strip (-).",
     }),
   lembaga: z.string().min(1, { message: "Silakan pilih lembaga." }),
 });
@@ -223,7 +223,7 @@ export default function ShortLinkForm() {
                 <GlassInput
                   id="slug"
                   type="text"
-                  placeholder="oprec-bem-unsoed"
+                  placeholder="OprecS32026"
                   {...register("slug")} // Pengganti value & onChange
                   className={errors.slug ? "border-red-500" : ""}
                 />
