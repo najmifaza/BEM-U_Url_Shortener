@@ -4,6 +4,7 @@ import {
   GlassAvatarImage,
 } from "@/components/ui/glass-avatar";
 import {
+  GlassCard,
   GlassCardContent,
   GlassCardDescription,
   GlassCardHeader,
@@ -11,7 +12,6 @@ import {
 } from "@/components/ui/glass-card";
 import { PhoneCall } from "lucide-react";
 import { GlassButton } from "@/components/ui/glass-button";
-import { GlassMorphCard } from "@/components/glass-morph-card";
 export default function Database() {
   return (
     <div
@@ -24,7 +24,7 @@ export default function Database() {
       />
       {/* LAYER 3: Form Utama (Paling Atas) */}
       <main className="w-full max-w-sm  ">
-        <GlassMorphCard className="">
+        <GlassCard className="">
           <GlassCardHeader className="items-center">
             <GlassAvatar className="h-16 w-16">
               <GlassAvatarImage src="/Adminn.jpg" alt="User" />
@@ -53,7 +53,7 @@ export default function Database() {
               </a>
             </GlassButton>
           </GlassCardContent>
-        </GlassMorphCard>
+        </GlassCard>
       </main>
     </div>
   );

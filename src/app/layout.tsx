@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} h-dvh `}>
       <body
         // Tambahkan relative, h-full, dan overflow-hidden di sini juga
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative h-full
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relative h-full overflow-hidden 
        bg-zinc-950`}
       >
         {" "}
@@ -40,7 +40,7 @@ export default function RootLayout({
             // color1="#FF9FFC" tiga ini warna aslinya
             // color2="#5227FF"
             // color3="#B19EEF"
-            timeSpeed={1}
+            timeSpeed={0}
             colorBalance={0}
             warpStrength={1}
             warpFrequency={5}
