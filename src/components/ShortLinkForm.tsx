@@ -135,7 +135,7 @@ export default function ShortLinkForm() {
         />
       ));
     } else {
-      const fullUrl = `bem-unsoed.com/${pendingData.slug}`;
+      const fullUrl = `BEM-Unsoed.com/${pendingData.slug}`;
 
       toast.custom(() => (
         <GlassNotification

@@ -8,7 +8,7 @@ export default function CopyButton({ slug }: { slug: string }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
-    const fullUrl = `bem-unsoed.com/${slug}`; // ${window.location.origin}/${slug}
+    const fullUrl = `BEM-Unsoed.com/${slug}`; // ${window.location.origin}/${slug}
     await navigator.clipboard.writeText(fullUrl);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
