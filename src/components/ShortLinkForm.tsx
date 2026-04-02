@@ -90,7 +90,7 @@ export default function ShortLinkForm() {
     if (!pendingData) return;
 
     // Cek apakah password benar
-    if (adminPassword !== "klausacipta") {
+    if (adminPassword !== "kausacipta") {
       toast.custom(() => (
         <GlassNotification
           type="error"
