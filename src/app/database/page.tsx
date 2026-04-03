@@ -1,13 +1,6 @@
-import {
-  GlassTable,
-  GlassTableBody,
-  GlassTableCell,
-  GlassTableHeader,
-  GlassTableRow,
-  GlassTableHead,
-} from "@/components/glass-table";
 import { supabase } from "@/lib/supabase";
-import CopyButton from "@/components/CopyButton";
+import DatabaseClient from "@/components/DatabaseClient";
+
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
@@ -33,48 +26,7 @@ export default async function Database() {
         className="absolute inset-0 z-10 bg-zinc-50/0 dark:bg-zinc-950/80
                 pointer-events-none"
       />
-      <main className="w-full max-w-2xl relative z-20">
-        <GlassTable className="max-h-145 sm:max-h-120 ">
-          <GlassTableHeader>
-            <GlassTableRow>
-              <GlassTableHead className="w-px whitespace-nowrap">Lembaga</GlassTableHead>
-              <GlassTableHead>Slug</GlassTableHead>
-              <GlassTableHead className="text-right w-px whitespace-nowrap">Klik</GlassTableHead>
-              <GlassTableHead className="w-px whitespace-nowrap">Tanggal</GlassTableHead>
-            </GlassTableRow>
-          </GlassTableHeader>
-          <GlassTableBody>
-            {links?.map((link) => (
-              <GlassTableRow key={link.id}>
-                <GlassTableCell className="font-medium whitespace-nowrap">
-                  {link.lembaga || "Umum"}
-                </GlassTableCell>
-                <GlassTableCell className="min-w-37.5">
-                  <CopyButton slug={link.slug} />
-                </GlassTableCell>
-                <GlassTableCell className="text-right font-bold whitespace-nowrap">
-                  {link.jumlah_klik || 0}
-                </GlassTableCell>
-                <GlassTableCell className="text-xs opacity-60 whitespace-nowrap">
-                  {/* Format tanggal agar mudah dibaca */}
-                  {new Date(link.created_at).toLocaleDateString("id-ID")}
-                </GlassTableCell>
-              </GlassTableRow>
-            ))}
-            {/* Tampilkan pesan jika data kosong */}
-            {links?.length === 0 && (
-              <GlassTableRow>
-                <GlassTableCell
-                  colSpan={4}
-                  className="text-center py-10 opacity-50"
-                >
-                  Belum ada link yang dibuat.
-                </GlassTableCell>
-              </GlassTableRow>
-            )}
-          </GlassTableBody>
-        </GlassTable>
-      </main>
+      <DatabaseClient initialLinks={links || []} />
     </div>
   );
 }
