@@ -75,7 +75,7 @@ export default function DatabaseClient({ initialLinks }: DatabaseClientProps) {
           </GlassSelectTrigger>
           <GlassSelectContent>
             <GlassSelectItem value="waktu">Waktu</GlassSelectItem>
-            <GlassSelectItem value="jumlah_klik">Jumlah Klik</GlassSelectItem>
+            <GlassSelectItem value="jumlah_klik">Kunjungan</GlassSelectItem>
           </GlassSelectContent>
         </GlassSelect>
       </div>
@@ -87,7 +87,7 @@ export default function DatabaseClient({ initialLinks }: DatabaseClientProps) {
             </GlassTableHead>
             <GlassTableHead>Slug</GlassTableHead>
             <GlassTableHead className="text-right w-px whitespace-nowrap">
-              Klik
+              Kunjungan
             </GlassTableHead>
             <GlassTableHead className="w-px whitespace-nowrap">
               Tanggal

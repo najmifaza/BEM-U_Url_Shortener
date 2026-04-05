@@ -21,10 +21,16 @@ export default function Loading() {
         <GlassTable className="max-h-145 sm:max-h-120 opacity-50">
           <GlassTableHeader>
             <GlassTableRow>
-              <GlassTableHead className="w-px whitespace-nowrap">Lembaga</GlassTableHead>
+              <GlassTableHead className="w-px whitespace-nowrap">
+                Lembaga
+              </GlassTableHead>
               <GlassTableHead>Slug</GlassTableHead>
-              <GlassTableHead className="text-right w-px whitespace-nowrap">Klik</GlassTableHead>
-              <GlassTableHead className="w-px whitespace-nowrap">Tanggal</GlassTableHead>
+              <GlassTableHead className="text-right w-px whitespace-nowrap">
+                Kunjungan
+              </GlassTableHead>
+              <GlassTableHead className="w-px whitespace-nowrap">
+                Tanggal
+              </GlassTableHead>
             </GlassTableRow>
           </GlassTableHeader>
           <GlassTableBody>
