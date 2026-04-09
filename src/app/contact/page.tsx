@@ -28,7 +28,7 @@ export default function Database() {
           <GlassCardHeader className="items-center">
             <GlassAvatar className="h-16 w-16">
               <GlassAvatarImage src="/Adminn.jpg" alt="User" />
-              <GlassAvatarFallback>Najmi</GlassAvatarFallback>
+              <GlassAvatarFallback>NAKOMS</GlassAvatarFallback>
             </GlassAvatar>
             <GlassCardTitle className="mt-4">Siapa Yaaa</GlassCardTitle>
             <GlassCardDescription className="text-center">
