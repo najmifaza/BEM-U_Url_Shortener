@@ -4,7 +4,6 @@ import Image from "next/image";
 import { Label } from "@/components/ui/label";
 import { GlassCard } from "@/components/ui/glass-card";
 import { useState } from "react";
-import { supabase } from "@/lib/supabase";
 // 1. Import Zod dan React Hook Form
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -47,7 +46,7 @@ const formSchema = z.object({
   slug: z
     .string()
     .min(3, { message: "Slug minimal 3 karakter." })
-    .max(20, { message: "Slug maksimal 20 karakter." })
+    .max(30, { message: "Slug maksimal 30 karakter." })
     .regex(/^[a-zA-Z0-9-]+$/, {
       message: "Slug hanya boleh berisi huruf, angka, dan strip (-).",
     }),
@@ -89,51 +88,33 @@ export default function ShortLinkForm() {
   const handleVerifyAndSubmit = async () => {
     if (!pendingData) return;
 
-    // Cek apakah password benar
-    if (adminPassword !== "kausacipta") {
-      toast.custom(() => (
-        <GlassNotification
-          type="error"
-          title="Password Salah!"
-          description="Hanya admin BEM yang diperbolehkan membuat link."
-          className="w-87.5"
-        />
-      ));
-      return;
-    }
-
     setLoading(true);
-    setIsPasswordDialogOpen(false); // Tutup dialog
-
-    // Auto-prepend https:// jika tidak ada protokol
-    let finalUrl = pendingData.urlAsli;
-    if (!/^https?:\/\//i.test(finalUrl)) {
-      finalUrl = `https://${finalUrl}`;
-    }
-
-    // Simpan ke Supabase
-    const { error } = await supabase.from("links").insert([
-      {
-        url_asli: finalUrl,
+    const response = await fetch("/api/links/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        urlAsli: pendingData.urlAsli,
         slug: pendingData.slug,
         lembaga: pendingData.lembaga,
-      },
-    ]);
+        password: adminPassword,
+      }),
+    });
 
-    if (error) {
-      const isDuplicate = error.code === "23505";
+    const payload = await response.json();
+
+    if (!response.ok) {
       toast.custom(() => (
         <GlassNotification
           type="error"
-          title="Gagal Membuat Link!"
-          description={
-            isDuplicate
-              ? "Slug ini sudah digunakan. Silakan pilih slug lain."
-              : error.message
-          }
+          title={response.status === 401 ? "Password Salah!" : "Gagal Membuat Link!"}
+          description={payload?.message || "Terjadi kesalahan saat membuat link."}
           className="w-87.5"
         />
       ));
+      setLoading(false);
+      return;
     } else {
       const fullUrl = `BEM-Unsoed.com/${pendingData.slug}`;
 
@@ -165,6 +146,7 @@ export default function ShortLinkForm() {
       ));
 
       reset();
+      setIsPasswordDialogOpen(false);
       setAdminPassword(""); // Reset password input
       setPendingData(null);
     }

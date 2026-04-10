@@ -7,7 +7,7 @@ export const revalidate = 0;
 export default async function Database() {
   const { data: links, error } = await supabase
     .from("links")
-    .select("id, lembaga, slug, jumlah_klik, created_at")
+    .select("id, lembaga, slug, url_asli, jumlah_klik, created_at")
     .order("created_at", { ascending: false });
 
   if (error) {
