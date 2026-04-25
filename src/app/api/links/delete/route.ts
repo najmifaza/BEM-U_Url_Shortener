@@ -7,11 +7,13 @@ const deleteLinkSchema = z.object({
   slug: z
     .string()
     .min(3, { message: "Slug minimal 3 karakter." })
-    .max(20, { message: "Slug maksimal 20 karakter." })
+    .max(50, { message: "Slug maksimal 50 karakter." })
     .regex(/^[a-zA-Z0-9-]+$/, {
       message: "Slug hanya boleh berisi huruf, angka, dan strip (-).",
     }),
-  confirmationSlug: z.string().min(1, { message: "Konfirmasi slug wajib diisi." }),
+  confirmationSlug: z
+    .string()
+    .min(1, { message: "Konfirmasi slug wajib diisi." }),
   password: z.string().min(1, { message: "Password wajib diisi." }),
 });
 
@@ -48,7 +50,10 @@ export async function DELETE(request: NextRequest) {
     }
 
     if (password !== expectedPassword) {
-      return NextResponse.json({ message: "Password super admin salah." }, { status: 401 });
+      return NextResponse.json(
+        { message: "Password super admin salah." },
+        { status: 401 },
+      );
     }
 
     if (confirmationSlug !== slug) {
@@ -80,7 +85,10 @@ export async function DELETE(request: NextRequest) {
     }
 
     if (!existingLink) {
-      return NextResponse.json({ message: "Data link tidak ditemukan." }, { status: 404 });
+      return NextResponse.json(
+        { message: "Data link tidak ditemukan." },
+        { status: 404 },
+      );
     }
 
     if (existingLink.slug !== slug) {

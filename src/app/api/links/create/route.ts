@@ -16,7 +16,7 @@ const createLinkSchema = z.object({
   slug: z
     .string()
     .min(3, { message: "Slug minimal 3 karakter." })
-    .max(30, { message: "Slug maksimal 30 karakter." })
+    .max(50, { message: "Slug maksimal 50 karakter." })
     .regex(/^[a-zA-Z0-9-]+$/, {
       message: "Slug hanya boleh berisi huruf, angka, dan strip (-).",
     }),
@@ -71,7 +71,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const finalUrl = /^https?:\/\//i.test(urlAsli) ? urlAsli : `https://${urlAsli}`;
+    const finalUrl = /^https?:\/\//i.test(urlAsli)
+      ? urlAsli
+      : `https://${urlAsli}`;
 
     const { error } = await supabase.from("links").insert([
       {

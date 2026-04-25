@@ -46,7 +46,7 @@ const formSchema = z.object({
   slug: z
     .string()
     .min(3, { message: "Slug minimal 3 karakter." })
-    .max(30, { message: "Slug maksimal 30 karakter." })
+    .max(50, { message: "Slug maksimal 50 karakter." })
     .regex(/^[a-zA-Z0-9-]+$/, {
       message: "Slug hanya boleh berisi huruf, angka, dan strip (-).",
     }),
@@ -108,8 +108,12 @@ export default function ShortLinkForm() {
       toast.custom(() => (
         <GlassNotification
           type="error"
-          title={response.status === 401 ? "Password Salah!" : "Gagal Membuat Link!"}
-          description={payload?.message || "Terjadi kesalahan saat membuat link."}
+          title={
+            response.status === 401 ? "Password Salah!" : "Gagal Membuat Link!"
+          }
+          description={
+            payload?.message || "Terjadi kesalahan saat membuat link."
+          }
           className="w-87.5"
         />
       ));

@@ -7,7 +7,7 @@ const updateLinkSchema = z.object({
   slug: z
     .string()
     .min(3, { message: "Slug minimal 3 karakter." })
-    .max(20, { message: "Slug maksimal 20 karakter." })
+    .max(50, { message: "Slug maksimal 50 karakter." })
     .regex(/^[a-zA-Z0-9-]+$/, {
       message: "Slug hanya boleh berisi huruf, angka, dan strip (-).",
     }),
@@ -58,7 +58,10 @@ export async function PATCH(request: NextRequest) {
     }
 
     if (password !== expectedPassword) {
-      return NextResponse.json({ message: "Password super admin salah." }, { status: 401 });
+      return NextResponse.json(
+        { message: "Password super admin salah." },
+        { status: 401 },
+      );
     }
 
     const supabase = getSupabaseServerClient();
@@ -69,7 +72,9 @@ export async function PATCH(request: NextRequest) {
       );
     }
 
-    const finalUrl = /^https?:\/\//i.test(urlAsli) ? urlAsli : `https://${urlAsli}`;
+    const finalUrl = /^https?:\/\//i.test(urlAsli)
+      ? urlAsli
+      : `https://${urlAsli}`;
 
     const { data: duplicate, error: duplicateError } = await supabase
       .from("links")
