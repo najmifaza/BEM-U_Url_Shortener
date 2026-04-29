@@ -15,7 +15,7 @@ const updateLinkSchema = z.object({
     .string()
     .min(1, { message: "URL Asli tidak boleh kosong." })
     .regex(
-      /^(?:(?:https?:\/\/)?(?:www\.)?)?[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+(?:\/[^\s]*)?$/,
+      /^(?:(?:https?:\/\/)?(?:www\.)?)?[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+(?:[\/?#][^\s]*)?$/,
       {
         message:
           "Format URL tidak valid (contoh: google.com atau https://google.com)",
