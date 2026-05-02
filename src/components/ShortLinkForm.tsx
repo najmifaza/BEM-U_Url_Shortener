@@ -166,10 +166,10 @@ export default function ShortLinkForm() {
         <div className="flex justify-center mb-3">
           <Image
             className="dark:invert"
-            src="/logo.svg"
+            src="/KabinetKausaCipta.webp"
             alt="BEM-U logo"
-            width={120}
-            height={24}
+            width={65}
+            height={12}
             priority
           />
         </div>
