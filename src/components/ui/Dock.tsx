@@ -1,7 +1,7 @@
 "use client";
 
 import { GlassDock } from "@/components/ui/glass-dock";
-import { Home, Database, ContactRound, Link } from "lucide-react";
+import { Home, Database, ContactRound, Link, QrCode } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export default function Dock() {
@@ -22,6 +22,13 @@ export default function Dock() {
       active: pathname === "/shortener",
     },
     {
+      id: "qrgenerator",
+      icon: <QrCode />,
+      label: "QrGenerator",
+      href: "/qrgenerator",
+      active: pathname === "/qrgenerator",
+    },
+    {
       id: "database",
       icon: <Database />,
       label: "Database",
@@ -36,7 +43,9 @@ export default function Dock() {
       active: pathname === "/contact",
     },
   ];
-
+  if (pathname.startsWith("/not-found.") || pathname.startsWith("/[slug]")) {
+    return null;
+  }
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
       <GlassDock items={items} />
