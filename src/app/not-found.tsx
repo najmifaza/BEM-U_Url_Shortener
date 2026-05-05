@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
+import { PhoneCall } from "lucide-react";
 
 export default function NotFound() {
   return (
@@ -19,13 +20,13 @@ export default function NotFound() {
             </h2>
             <p className="text-white/60 text-sm mb-5">
               Maaf, halaman yang Anda cari tidak ada atau link singkat tersebut
-              belum terdaftar.
+              belum terdaftar. Silahkan hubungi developer di bawah ini.
             </p>
           </div>
 
-          <Link href="/" passHref>
-            <GlassButton variant="default" className="px-8">
-              Kembali ke Beranda
+          <Link href="https://instagram.com/nakomisme " passHref>
+            <GlassButton variant="default" className="">
+              Hubungi Developer <PhoneCall className="h-5! w-5! " />
             </GlassButton>
           </Link>
         </GlassCard>

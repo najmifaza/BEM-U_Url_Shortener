@@ -43,7 +43,10 @@ export default function Dock() {
       active: pathname === "/contact",
     },
   ];
-  if (pathname.startsWith("/not-found.") || pathname.startsWith("/[slug]")) {
+  const validPaths = items.map((item) => item.href);
+  // Jika pathname saat ini tidak ada di daftar validPaths, sembunyikan Dock
+  // Ini otomatis akan menyembunyikan Dock di halaman /[slug] dan halaman 404
+  if (!validPaths.includes(pathname)) {
     return null;
   }
   return (

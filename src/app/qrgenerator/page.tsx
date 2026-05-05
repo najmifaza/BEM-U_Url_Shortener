@@ -6,7 +6,7 @@ import { GlassButton } from "@/components/ui/glass-button";
 import { Download } from "lucide-react";
 
 export default function QRCodeGeneratorPage() {
-  const [url, setUrl] = useState("bem-unsoed.com");
+  const [url, setUrl] = useState("");
   const [qrColor, setQrColor] = useState("#ffffff");
   const [logoUrl, setLogoUrl] = useState("");
   const [logoSize, setLogoSize] = useState<{
