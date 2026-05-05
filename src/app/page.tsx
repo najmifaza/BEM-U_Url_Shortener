@@ -4,6 +4,7 @@ import Link from "next/link";
 import { GlassBadge } from "@/components/ui/glass-badge";
 import { GlassButton } from "@/components/ui/glass-button";
 import BlurText from "@/components/BlurText";
+import Image from "next/image";
 export default function Hero() {
   const handleAnimationComplete = () => {
     console.log("Animation completed!");
@@ -15,10 +16,17 @@ export default function Hero() {
   pt-30 sm:pt-0 scale-[0.87] sm:scale-100 origin-top"
       >
         <div className="relative z-10 max-w-4xl text-center  ">
-          <GlassBadge asChild className="rounded-full border-border py-1 ">
-            <Link href="#" className="inline-flex items-center">
+          <GlassBadge asChild className="rounded-full border-border py-1  ">
+            {/* <Link href="#" className="inline-flex items-center">
               Just released v1.0.0 <ArrowUpRight className="ml-1 size-4" />
-            </Link>
+            </Link> */}
+            <Image
+              src="/logobem.png"
+              alt="Description"
+              width={250}
+              height={250}
+              className="w-40 h-auto sm:w-62.5"
+            />
           </GlassBadge>
           <BlurText
             text="Link Proker Kepanjangan? Singkatin Aja di Sini"
