@@ -22,14 +22,7 @@ import { GlassButton } from "./ui/glass-button";
 import { LEMBAGA_LIST } from "@/lib/constants";
 import { toast } from "sonner";
 import { GlassNotification } from "./glass-notification";
-import {
-  GlassDialog,
-  GlassDialogContent,
-  GlassDialogDescription,
-  GlassDialogFooter,
-  GlassDialogHeader,
-  GlassDialogTitle,
-} from "./ui/glass-dialog";
+import { AdminPasswordDialog } from "./AdminPasswordDialog";
 
 // 2. Buat Skema Validasi Zod (Sangat Ketat & Profesional)
 const formSchema = z.object({
@@ -263,50 +256,18 @@ export default function ShortLinkForm() {
       </GlassCard>
 
       {/* Dialog Password Admin */}
-      <GlassDialog
+      <AdminPasswordDialog
         open={isPasswordDialogOpen}
         onOpenChange={setIsPasswordDialogOpen}
-      >
-        <GlassDialogContent className="sm:max-w-md  ">
-          <GlassDialogHeader>
-            <GlassDialogTitle>Verifikasi Admin</GlassDialogTitle>
-            <GlassDialogDescription>
-              Masukkan password admin untuk membuat link singkat baru.
-            </GlassDialogDescription>
-          </GlassDialogHeader>
-          <div className="space-y-4 py-4">
-            <div className="space-y-2">
-              <Label htmlFor="admin-password">Password</Label>
-              <GlassInput
-                id="admin-password"
-                type="password"
-                placeholder="••••••••"
-                value={adminPassword}
-                onChange={(e) => setAdminPassword(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") handleVerifyAndSubmit();
-                }}
-              />
-            </div>
-          </div>
-          <GlassDialogFooter className="flex flex-row gap-1.5">
-            <GlassButton
-              type="button"
-              variant="outline"
-              onClick={() => setIsPasswordDialogOpen(false)}
-            >
-              Batal
-            </GlassButton>
-            <GlassButton
-              type="button"
-              onClick={handleVerifyAndSubmit}
-              disabled={loading || !adminPassword}
-            >
-              {loading ? "Memproses..." : "Buat Link"}
-            </GlassButton>
-          </GlassDialogFooter>
-        </GlassDialogContent>
-      </GlassDialog>
+        password={adminPassword}
+        onPasswordChange={setAdminPassword}
+        onConfirm={handleVerifyAndSubmit}
+        title="Verifikasi Admin"
+        description="Masukkan password admin untuk membuat link singkat baru."
+        confirmLabel="Buat Link"
+        loadingLabel="Memproses..."
+        loading={loading}
+      />
     </>
   );
 }

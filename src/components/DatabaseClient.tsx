@@ -128,7 +128,7 @@ export default function DatabaseClient({ initialLinks }: DatabaseClientProps) {
     }
 
     try {
-      const response = await fetch("/api/links/verify-password", {
+      const response = await fetch("/api/links/verify-super-admin-password", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -138,11 +138,11 @@ export default function DatabaseClient({ initialLinks }: DatabaseClientProps) {
 
       const payload = await response.json();
       if (!response.ok) {
-        toast.error(payload?.message || "Password tidak valid.");
+        toast.error(payload?.message || "Password super admin salah.");
         return;
       }
     } catch {
-      toast.error("Gagal memverifikasi password.");
+      toast.error("Gagal memverifikasi password super admin.");
       return;
     }
 
@@ -366,9 +366,9 @@ export default function DatabaseClient({ initialLinks }: DatabaseClientProps) {
       >
         <GlassDialogContent className="sm:max-w-md">
           <GlassDialogHeader>
-            <GlassDialogTitle>Verifikasi Super Admin</GlassDialogTitle>
+            <GlassDialogTitle>Password Super Admin</GlassDialogTitle>
             <GlassDialogDescription>
-              Masukkan password untuk membuka form edit link.
+              Masukkan password super admin untuk edit atau menghapus link.
             </GlassDialogDescription>
           </GlassDialogHeader>
           <div className="space-y-2 py-2">

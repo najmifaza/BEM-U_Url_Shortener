@@ -1,10 +1,23 @@
+import { cookies } from "next/headers";
 import { supabase } from "@/lib/supabase";
 import DatabaseClient from "@/components/DatabaseClient";
+import DatabaseAccessGate from "@/components/DatabaseAccessGate";
+import {
+  DATABASE_ACCESS_COOKIE_NAME,
+  hasDatabaseAccess,
+} from "@/lib/admin-auth";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 export default async function Database() {
+  const cookieStore = await cookies();
+  const accessCookie = cookieStore.get(DATABASE_ACCESS_COOKIE_NAME)?.value;
+
+  if (!hasDatabaseAccess(accessCookie)) {
+    return <DatabaseAccessGate />;
+  }
+
   const { data: links, error } = await supabase
     .from("links")
     .select("id, lembaga, slug, url_asli, jumlah_klik, created_at")
