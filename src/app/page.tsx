@@ -42,7 +42,7 @@ export default function Hero() {
           <p className="mt-6 text-foreground/80 md:text-lg">
             Tingkatkan profesionalitas publikasi BEM Unsoed. Ubah URL Google
             Drive atau Form yang panjang menjadi tautan pendek yang tepercaya
-            dan enak dilihat di setiap poster acara..
+            dan enak dilihat di setiap poster acara.
           </p>
           <div className="mt-12 flex items-center justify-center gap-4">
             <GlassButton size="lg" asChild>
