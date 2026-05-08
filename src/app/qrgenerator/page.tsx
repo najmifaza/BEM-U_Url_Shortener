@@ -92,7 +92,7 @@ export default function QRCodeGeneratorPage() {
       <div className="absolute inset-0 z-10 bg-zinc-50/0 pointer-events-none" />{" "}
       {/* Kamu bisa ganti div ini dengan <GlassCard> milikmu */}
       <main className="w-full max-w-sm  ">
-        <GlassCard className="my-auto w-full max-w-md rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-xl p-5 sm:p-8">
+        <GlassCard className="my-auto w-full max-w-md rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-xl p-5 sm:p-8 lg:mb-25">
           <h1 className="text-xl sm:text-2xl font-bold text-center mb-5 sm:mb-6 text-white">
             Generate QR Code
           </h1>
