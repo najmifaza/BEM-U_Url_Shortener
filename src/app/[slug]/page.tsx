@@ -4,6 +4,16 @@ import { redirect, notFound } from "next/navigation";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    openGraph: {
+      images: [],
+    },
+  };
+}
+
 // Tipe data untuk parameter
 interface PageProps {
   params: Promise<{

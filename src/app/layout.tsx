@@ -17,6 +17,16 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Url Shortner",
   description: "Short your Link ",
+  openGraph: {
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Url Shortner OG Image",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
